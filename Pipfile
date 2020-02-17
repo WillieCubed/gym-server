@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pydoc-markdown = "*"
+numpy = "*"
+keras = "*"
+
+[packages]
+websockets = "*"
+setuptools = "*"
+wheel = "*"
+requests = "*"
+google-cloud-logging = "*"
+flask = "*"
+
+[requires]
+python_version = "3.7"
