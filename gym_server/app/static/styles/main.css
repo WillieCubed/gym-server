@@ -1,0 +1,20 @@
+/* Styles common to all pages. */
+
+:root {
+    /*--primary-color: ;*/
+    /*--secondary-color: ;*/
+    /*--color-on-primary: ;*/
+    /*--color-on-secondary: ;*/
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.create-experiment-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}

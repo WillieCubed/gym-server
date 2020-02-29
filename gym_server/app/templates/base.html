@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gym Server Console - {{ title }}</title>
+
+    <meta name="description" content="The console for managing active experiments">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bulma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+
+    <meta name="theme-color" content="#3b678b">
+
+    <script src="{{ url_for('static', filename='scripts/ui.js') }}"></script>
+</head>
+
+<body>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        {# TODO: Replace with admin-specified icon #}
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">Gym Server Console</div>
+            <a class="navbar-item" href="/">Home</a>
+            <a class="navbar-item" href="{{ url_for('view_experiments') }}">Experiments</a>
+        </div>
+    </div>
+</nav>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<div>
+    {% block overlay %}
+    {% endblock %}
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Gym Server Console",
+  "short_name": "Gym Console",
+  "theme_color": "#3b678b",
+  "background_color": "#fafafa",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}
