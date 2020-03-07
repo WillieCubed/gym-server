@@ -4,7 +4,7 @@ To start the server in debug mode, run the server with environment variable
 DEBUG_FLAG set to true (1).
 """
 
-from . import app
+from gym_server.app import app, db
 
 
 @app.route('/')
