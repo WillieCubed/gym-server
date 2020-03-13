@@ -13,6 +13,9 @@ class UserModel(db.Model):
         id: The primary identifier for a user
         name: A name used to reference the user
         email: A email used to reset password
+        password: This user's salted, hashed password
+        experiments: All experiments that this user owns
+        is_admin: True if this user has access to all experiment data
     """
 
     __tablename__ = 'users'
@@ -39,8 +42,11 @@ class ExperimentModel(db.Model):
         description: Optional user-specified notes for this experiment.
         creation_date: The timestamp indicating when this experiment had its initial
             configuration created.
+        last_updated: The time this entry was last modified
+        status: The current state of this experiment.
         config_name: The name of the experiment configuration file
-        owner: The ID of the user who owns this experiment
+        owner_id: The ID of the user who owns this experiment
+        owner: An object reference to the user who owns this experiment.
     """
 
     __tablename__ = 'experiments'
