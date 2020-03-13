@@ -120,9 +120,21 @@ def delete_experiment(experiment_id: str) -> Response:
 
     This endpoint supports DELETE operations only.
 
+    If the requested experiment resource is running, it will be stopped.
+
     Args:
         experiment_id (str): The ID of the experiment
+
+    Returns:
+        Response: a 200 OK response if the deletion was done.
     """
+    # TODO(auth): Handle experiment permissions
+    # TODO: Check if experiment exists
+    # TODO: Stop experiment if running
+    ExperimentModel.query.filter_by(id=experiment_id).delete()
+    # TODO: Handle experiment not existing
+    db.session.commit()
     return make_response((
-        'OK', 200
+        'OK',
+        200,
     ))
