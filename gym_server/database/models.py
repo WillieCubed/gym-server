@@ -22,6 +22,7 @@ class UserModel(db.Model):
     email = db.Column(db.Text)
     password = db.Column(db.String(64))
     experiments = db.relationship('Experiment', back_populates='users', lazy='dynamic')
+    is_admin = db.Column(db.Boolean)
 
     def __repr__(self):
         return f'<User {self.id}>'
