@@ -54,7 +54,7 @@ def create_experiment() -> Response:
 
 @bp.route('/experiments', methods=['GET'])
 def get_experiments() -> Response:
-    """Fetches all experiments accessible to the current user.
+    """Fetch all experiments accessible to the current user.
 
     This endpoint supports GET requests only.
 
@@ -62,8 +62,18 @@ def get_experiments() -> Response:
     to its auth token and public experiments. Otherwise, only public
     experiments are returned.
     """
+    # TODO: Error handling
+    # TODO(auth): Handle experiment permissions
+    experiments = ExperimentModel.order_by(ExperimentModel.last_updated).all()
+    experiments_json = json.dumps([experiment.to_json() for experiment in experiments])
+    headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': len(experiments_json),
+    }
     return make_response((
-        'OK', 200
+        experiments_json,
+        200,
+        headers,
     ))
 
 
