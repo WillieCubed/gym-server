@@ -13,9 +13,31 @@ As an overview:
 - To remove experiment data, DELETE /experiments/:experiment_id
 """
 
+import json
+from pathlib import Path
+from uuid import uuid4
+
 from flask import Response, request, make_response
 
 from ..experiments import bp
+
+CONFIG_STORAGE_PATH = str(Path.home() / 'gym_server' / 'config' / 'experiments')
+
+
+def store_config(config_json: str) -> str:
+    """Store an experiment configuration as a JSON file.
+
+    Write an experiment configuration to file.
+
+    Returns:
+        The URI of the config.
+    """
+    # TODO: Support remote storage of files into Cloud bucket
+    uuid = uuid4()
+    path = f'{CONFIG_STORAGE_PATH}/config_{uuid}.json'
+    with open(path) as f:
+        json.dump(config_json, f)
+    return path
 
 
 @bp.route('/experiments', methods=['POST'])
