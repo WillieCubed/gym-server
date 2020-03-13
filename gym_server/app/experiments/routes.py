@@ -83,11 +83,26 @@ def get_experiment(experiment_id: str) -> Response:
 
     This endpoint supports GET requests only.
 
+    If the user isn't authenticated, the request will be rejected unless the
+    requested experiment is public.
+    If the user is authenticated but not authorized to view this experiment,
+    the request will be rejected.
+
     Args:
-        experiment_id (str): The ID of the experiment
+        experiment_id (str): The ID of the experiment to fetch
     """
+    experiment = ExperimentModel.get(experiment_id)
+    # TODO: Handle errors and experiment not existing
+    # TODO(auth): Handle experiment permissions
+    body = experiment.to_dict()
+    headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': len(body),
+    }
     return make_response((
-        'OK', 200
+        body,
+        200,
+        headers,
     ))
 
 
