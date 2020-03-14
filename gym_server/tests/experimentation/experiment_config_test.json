@@ -1,0 +1,26 @@
+{
+  "name": "Just a test Experiment",
+  "description": "A sample script",
+  "environment": "",
+  "render": true,
+  "story": [
+    {
+      "name": "step 1",
+      "step": 50,
+      "event": {
+      }
+    },
+    {
+      "name": "step 1",
+      "step": 50,
+      "event": {
+      }
+    }
+  ],
+  "data": {
+    "observationSpace": {
+    },
+    "actionSpace": {
+    }
+  }
+}
